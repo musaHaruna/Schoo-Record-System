@@ -59,7 +59,7 @@ function App() {
         transition={Zoom}
       />
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<LoginPage />} />
         <Route path="/select-preference" element={<SelectPreference />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/teacher-login" element={<TeacherLogin />} />
