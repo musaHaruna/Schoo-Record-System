@@ -55,7 +55,7 @@ const Navbar = () => {
           </div>
           <div className={`navbar-dropdown ${isOpen ? "block" : "none"}`}>
             <div className="navbar-dropdown-profile">
-              <div className="profile-size">
+              <div className="profile-size ">
                 <Profile />
               </div>
               <div>
