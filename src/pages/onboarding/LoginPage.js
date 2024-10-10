@@ -20,8 +20,6 @@ const LoginPage = () => {
     role: "admin",
   });
 
-  console.log("Login Page Mounted");
-
   useEffect(() => {
     if (error) {
       toast.error(error.data.message);
