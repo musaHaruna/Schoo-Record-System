@@ -85,19 +85,19 @@ export const teachersLink = [
     icon: <IoIosArrowForward />,
     url: "all-teachers",
   },
-  {
-    id: 3,
-    title: "Teachers details",
-    icon: <IoIosArrowForward />,
-    url: "teachers-detail",
-  },
+  // {
+  //   id: 3,
+  //   title: "Teachers details",
+  //   icon: <IoIosArrowForward />,
+  //   url: "teachers-detail",
+  // },
 ];
 export const otherLinks = [
-  {
-    id: 7,
-    title: "Settings",
-    icon: <FiSettings />,
-  },
+  // {
+  //   id: 7,
+  //   title: "Settings",
+  //   icon: <FiSettings />,
+  // },
 
   {
     id: 8,

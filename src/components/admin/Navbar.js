@@ -7,8 +7,11 @@ import { useState } from "react";
 import MobileSideBar from "./MobileSideBar";
 import { Link } from "react-router-dom";
 import { useGetUserProfileQuery } from "../../app/api/userApi";
+import { logOut } from "../../app/features/authSlice";
+
 import { useSelector } from "react-redux";
 import { Loader } from "lucide-react";
+import { useDispatch } from "react-redux";
 
 const Navbar = () => {
   const { _ } = useGetUserProfileQuery();
@@ -16,11 +19,18 @@ const Navbar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const dispatch = useDispatch();
+
   const rotateIconClass = isOpen ? "rotate-upside-down" : "";
 
   const toggleProfile = () => {
     setIsOpen(!isOpen);
   };
+
+  const logout = () => {
+    dispatch(logOut());
+  };
+
   return (
     <article className="admin-navbar">
       <section className="admin-navbar-home">
@@ -54,11 +64,11 @@ const Navbar = () => {
               </div>
             </div>
             <div className="navbar-dropdown-content">
-              <div>
+              {/* <div>
                 <BsPerson />
-                {/* <Link to={"/teacher/profile"}>View Profile</Link> */}
-              </div>
-              <div>
+                <Link to={"/teacher/profile"}>View Profile</Link>
+              </div> */}
+              <div onClick={logout}>
                 <SlLogout />
                 <p>Logout</p>
               </div>
