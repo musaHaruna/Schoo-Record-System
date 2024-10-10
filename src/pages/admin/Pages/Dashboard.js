@@ -66,7 +66,7 @@ const Dashboard = () => {
       { name: "Students", value: studentsData?.length },
     ];
     setTeacherStudentRatio(teacherStudentRatio);
-  }, [teachersData]);
+  }, [teachersData, studentsData]);
 
   return (
     <article className="admin-dashboard">
