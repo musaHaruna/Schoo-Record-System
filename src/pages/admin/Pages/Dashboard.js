@@ -7,9 +7,7 @@ import {
   studentGrowthChartData,
   adminSummary,
   performanceData,
-  genderData,
   enrollmentByAgeData,
-  teacherToStudentCharts,
 } from "../data";
 import TeachersToStudentRatioChart from "../../../components/admin/charts/TeachersToStudentRatioChart";
 import { useGetUserProfileQuery } from "../../../app/api/userApi";
