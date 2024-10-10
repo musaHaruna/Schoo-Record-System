@@ -1,16 +1,17 @@
 import "../../assets/css/admin/navbar.css";
 import { Profile } from "../images";
-import { AiOutlineBell } from "react-icons/ai";
 import { SlArrowDown } from "react-icons/sl";
-import { PiHouseLineLight } from "react-icons/pi";
-import { BsPerson, BsChatLeft } from "react-icons/bs";
+import { BsPerson } from "react-icons/bs";
 import { SlLogout } from "react-icons/sl";
 import { useState } from "react";
 import MobileSideBar from "./MobileSideBar";
 import { Link } from "react-router-dom";
 import { useGetUserProfileQuery } from "../../app/api/userApi";
+import { logOut } from "../../app/features/authSlice";
+
 import { useSelector } from "react-redux";
 import { Loader } from "lucide-react";
+import { useDispatch } from "react-redux";
 
 const Navbar = () => {
   const { _ } = useGetUserProfileQuery();
@@ -18,11 +19,18 @@ const Navbar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const dispatch = useDispatch();
+
   const rotateIconClass = isOpen ? "rotate-upside-down" : "";
 
   const toggleProfile = () => {
     setIsOpen(!isOpen);
   };
+
+  const logout = () => {
+    dispatch(logOut());
+  };
+
   return (
     <article className="admin-navbar">
       <section className="admin-navbar-home">
@@ -56,11 +64,11 @@ const Navbar = () => {
               </div>
             </div>
             <div className="navbar-dropdown-content">
-              <div>
+              {/* <div>
                 <BsPerson />
                 <Link to={"/teacher/profile"}>View Profile</Link>
-              </div>
-              <div>
+              </div> */}
+              <div onClick={logout}>
                 <SlLogout />
                 <p>Logout</p>
               </div>

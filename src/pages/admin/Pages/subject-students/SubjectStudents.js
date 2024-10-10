@@ -1,4 +1,3 @@
-import { Button } from "../../../../components/ui/button";
 import StudentsTable from "../../../../components/admin/students/StudentsTable";
 import AssessmentModal from "../../../../components/Assessments/AssessmentModal";
 import { useGetSubjectStudentsQuery } from "../../../../app/api/allSubjectApi"; // Updated API hook for subject-specific students
@@ -43,9 +42,9 @@ const SubjectStudents = () => {
         <h1 className="font-bold text-[32px]">Subject Students</h1>
         <div className="action-buttons">
           <AssessmentModal></AssessmentModal>
-          <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">
+          {/* <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">
             Print Scores
-          </Button>
+          </Button> */}
         </div>
       </div>
 
