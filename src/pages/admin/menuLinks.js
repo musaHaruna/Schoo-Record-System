@@ -56,20 +56,20 @@ export const menuLinks = [
     url: "results",
     icon: <Icon icon="carbon:result-new" />,
   },
-  {
-    // student rouute
-    id: 9,
-    title: "Report Cards",
-    url: "result",
-    icon: <Icon icon="carbon:result-new" />,
-  },
-  {
-    // teachers route
-    id: 10,
-    title: "Upload results",
-    url: "results",
-    icon: <Icon icon="foundation:results-demographics" />,
-  },
+  // {
+  //   // student rouute
+  //   id: 9,
+  //   title: "Report Cards",
+  //   url: "result",
+  //   icon: <Icon icon="carbon:result-new" />,
+  // },
+  // {
+  //   // teachers route
+  //   id: 10,
+  //   title: "Upload results",
+  //   url: "results",
+  //   icon: <Icon icon="foundation:results-demographics" />,
+  // },
 ];
 export const teachersLink = [
   {

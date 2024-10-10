@@ -15,10 +15,10 @@ const ClassesCard = ({ className }) => {
         />
 
         <div className="flex flex-col gap-1">
-          <h2 className="text-lg font-semibold">{className.name}</h2>
+          <h2 className="text-lg font-semibold">{className?.name}</h2>
 
           <div>
-            <p className="text-sm">{ className.students.length } Students</p>
+            <p className="text-sm">{className.students?.length} Students</p>
           </div>
         </div>
       </div>
