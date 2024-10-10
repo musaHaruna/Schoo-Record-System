@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import "./ClassesCard.css";
 import { BookOpen } from "lucide-react";
 import { Button } from "../../../components/ui/button";
-import { MdDeleteForever } from "react-icons/md";
 import DeleteModal from "../../DeleteModal";
 
 const ClassesCard = ({ className }) => {

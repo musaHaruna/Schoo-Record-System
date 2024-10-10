@@ -1,9 +1,7 @@
 import "../../assets/css/admin/navbar.css";
 import { Profile } from "../images";
-import { AiOutlineBell } from "react-icons/ai";
 import { SlArrowDown } from "react-icons/sl";
-import { PiHouseLineLight } from "react-icons/pi";
-import { BsPerson, BsChatLeft } from "react-icons/bs";
+import { BsPerson } from "react-icons/bs";
 import { SlLogout } from "react-icons/sl";
 import { useState } from "react";
 import MobileSideBar from "./MobileSideBar";
