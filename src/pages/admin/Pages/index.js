@@ -13,11 +13,12 @@ import SubjectStudents from "./subject-students/SubjectStudents";
 import AccademicSessions from "./academic-sessions/AccademicSessions";
 import Assessments from "./assessments/Assessments";
 import Results from "./scores/Results";
-
+import Settings from "./Settings";
 export {
   Classes,
   Dashboard,
   Students,
+  Settings,
   Subjects,
   Teachers,
   SingleSubjects,
