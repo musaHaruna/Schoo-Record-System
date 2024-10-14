@@ -32,7 +32,7 @@ const Navbar = () => {
   };
 
   return (
-    <article className="admin-navbar">
+    <article className="admin-navbar sticky top-0 z-50 bg-white shadow-md">
       <section className="admin-navbar-home">
         <div>
           <MobileSideBar />
