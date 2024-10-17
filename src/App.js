@@ -19,6 +19,7 @@ import {
   AddTeacher,
   Subjects,
   SingleSubjects,
+  Settings,
   SubjectStudents,
   Results,
   AccademicSessions,
@@ -67,7 +68,9 @@ function App() {
         <Route path="/staff-registration" element={<StaffRegistration />} />
 
         <Route path="/admin" element={<Layout />}>
+          <Route path="settings" element={<Settings />} />
           <Route index element={<Dashboard />} />
+
           <Route path="classes" element={<Classes />} />
           <Route path="class/:id" element={<SingleClass />} />
 
@@ -132,6 +135,10 @@ function App() {
           <Route path="results" element={<ManageResults />} />
           <Route path="results/upload" element={<UploadResults />} />
         </Route>
+
+        {/* adding new route  */}
+
+        <Route path="/settings" element={<Settings />} />
 
         <Route path="*" element={<Error />} />
       </Routes>

@@ -15,6 +15,7 @@ import { sessionsApi } from "./api/sessionsApi";
 import { termsApi } from "./api/termApi";
 import { resultsApi } from "./api/resultsApi";
 import { assessmentsApi } from "./api/assessmentsApi";
+import schoolReducer from "./features/schoolSlice";
 
 export const store = configureStore({
   reducer: {
@@ -22,6 +23,7 @@ export const store = configureStore({
     user: userReducer,
     classResults: classResultsReducer,
     subjects: subjectsReducer,
+    school: schoolReducer,
     [authApi.reducerPath]: authApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
     [studentsApi.reducerPath]: studentsApi.reducer,

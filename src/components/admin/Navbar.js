@@ -64,10 +64,12 @@ const Navbar = () => {
               </div>
             </div>
             <div className="navbar-dropdown-content">
-              {/* <div>
+              {/* Settings Link */}
+              <div>
                 <BsPerson />
-                <Link to={"/teacher/profile"}>View Profile</Link>
-              </div> */}
+                <Link to="/admin/settings">Settings</Link>
+              </div>
+
               <div onClick={logout}>
                 <SlLogout />
                 <p>Logout</p>
