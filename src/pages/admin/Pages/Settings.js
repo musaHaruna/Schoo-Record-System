@@ -10,7 +10,6 @@ const Settings = () => {
 
   const dispatch = useDispatch();
 
-  // Handle school logo upload
   const handleLogoChange = (e) => {
     const file = e.target.files[0];
     setSchoolLogo(file);
