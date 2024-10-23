@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import "./ClassesCard.css";
 import { BookOpen } from "lucide-react";
 import { Button } from "../../../components/ui/button";
-import { MdDeleteForever } from "react-icons/md";
 import DeleteModal from "../../DeleteModal";
 
 const ClassesCard = ({ className }) => {
@@ -15,10 +14,10 @@ const ClassesCard = ({ className }) => {
         />
 
         <div className="flex flex-col gap-1">
-          <h2 className="text-lg font-semibold">{className.name}</h2>
+          <h2 className="text-lg font-semibold">{className?.name}</h2>
 
           <div>
-            <p className="text-sm">{ className.students.length } Students</p>
+            <p className="text-sm">{className.students?.length} Students</p>
           </div>
         </div>
       </div>
