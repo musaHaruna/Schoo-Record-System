@@ -22,6 +22,7 @@ const AddClasss = () => {
   useEffect(() => {
     if (error) {
       toast.error(error.data.message);
+      // console.log(error.data)
     }
 
     if (isSuccess) {

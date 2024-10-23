@@ -44,6 +44,7 @@ const SingleSession = ({ session }) => {
     setEndDate(session?.endDate);
   }, [session, error, isSuccess]);
 
+  console.log(sessionName);
   // const formatStartDate= startDate.toISOString().split('T')[0]
   //   const formatEndDate= endDate.toISOString().split('T')[0]
 

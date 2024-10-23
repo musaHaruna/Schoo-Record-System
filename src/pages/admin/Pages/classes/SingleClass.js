@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import StudentsTable from "../../../../components/admin/students/StudentsTable";
-import {
-  useGetClassStudentsQuery,
-  useGetSingleClassesQuery,
-} from "../../../../app/api/classApi";
+import { useGetClassStudentsQuery, useGetSingleClassesQuery } from "../../../../app/api/classApi";
 
 const SingleClass = () => {
   // get class id from the url
   const { id } = useParams();
   const { data: students } = useGetClassStudentsQuery(id);
   const { data: classDetails } = useGetSingleClassesQuery(id);
+
+  useEffect(() => {
+    console.log("classDetails>>>", students);
+  }, [students]);
 
   const columns = [
     { field: "id", headerName: "ID", width: 70 },

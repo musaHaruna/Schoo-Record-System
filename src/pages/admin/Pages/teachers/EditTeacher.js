@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
+
+import DeleteTeacher from "./DeleteTeacher";
 import { useParams } from "react-router-dom";
 import { useGetSingleTeacherQuery } from "../../../../app/api/teachersApi";
 import { Loader2 } from "lucide-react";
-import { useSelector } from "react-redux";
+import { Button } from "../../../../components/ui/button";
 
-const TeacherProfile = () => {
+const EditTeacherDetails = () => {
   const params = useParams();
-  const { user } = useSelector((state) => state.user);
-
-  console.log("hello");
-  console.log(user);
-  const { data, isLoading } = useGetSingleTeacherQuery(user?.id);
+  const { data, isLoading } = useGetSingleTeacherQuery(params.id);
 
   const [teacherDetails, setTeacherDetails] = useState({
     name: "",
@@ -23,17 +21,16 @@ const TeacherProfile = () => {
     qualifications: "",
   });
 
-  // useEffect(()=>{
-  //     setTeacherDetails({
-  //     name:data?.name,
-  //     email:data?.email,
-  //     dateOfBirth:data?.dateOfBirth,
-  //     gender:data?.gender,
-  //     phoneNumber:data?.phoneNumber,
-  //     qualifications:data?.qualifications
-  //     })
-
-  // }, [user, data])
+  useEffect(() => {
+    setTeacherDetails({
+      name: data?.name,
+      email: data?.email,
+      dateOfBirth: data?.dateOfBirth,
+      gender: data?.gender,
+      phoneNumber: data?.phoneNumber,
+      qualifications: data?.qualifications,
+    });
+  }, [params.id, data]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,13 +40,13 @@ const TeacherProfile = () => {
     });
   };
 
-  // if(isLoading){
-  //     return(
-  //       <div className="flex items-center justify-center h-screen w-full">
-  //         <Loader2 className=" animate-spin w-[60px] h-[60px]" />
-  //     </div>
-  // )
-  //   }
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen w-full">
+        <Loader2 className=" animate-spin w-[60px] h-[60px]" />
+      </div>
+    );
+  }
 
   return (
     <section className=" max-w-7xl mx-auto">
@@ -58,9 +55,15 @@ const TeacherProfile = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-6">
             <div className="flex flex-col gap-1">
-              <h2 className="text-[18px] font-semibold">{""}</h2>
-              <p className="text-gray-500 text-sm">My Profile</p>
+              <h2 className="text-[18px] font-semibold">{data?.name}</h2>
+              <p className="text-gray-500 text-sm">Staff/Teacher details</p>
             </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+
+            <Button >Save</Button>
+            <DeleteTeacher id={params.id} />
           </div>
         </div>
 
@@ -98,6 +101,8 @@ const TeacherProfile = () => {
                 />
               </div>
             </div>
+          </div>
+
             {/* second row */}
             <div className="grid   gap-6 grid-cols-12 ">
               <div className="flex flex-col gap-2 col-span-6">
@@ -124,8 +129,8 @@ const TeacherProfile = () => {
                   className="px-4 py-2 outline-none border border-gray-300 rounded-lg"
                 >
                   <option></option>
-                  <option value={"male"}>male</option>
-                  <option value={"female"}>female</option>
+                  <option value={"male"}>Male</option>
+                  <option value={"female"}>Female</option>
                 </select>
               </div>
 
@@ -143,6 +148,31 @@ const TeacherProfile = () => {
                   className="px-4 py-2 outline-none border border-gray-300 rounded-lg"
                 />
               </div>
+
+              {/* <div className='flex flex-col gap-2 col-span-6'>
+                        <label htmlFor='stateOfOrigin' className='text-sm'>State of Origin</label>
+                        <input
+                            type='text'
+                            id='stateOfOrigin'
+                            name='stateOfOrigin'
+                            placeholder='Osun state'
+                            className='px-4 py-2 outline-none border border-gray-300 rounded-lg' 
+
+                        />
+                    </div> */}
+
+              {/* <div className='flex flex-col gap-2 col-span-6'>
+                        <label htmlFor='lgaOfOrigin' className='text-sm'>Local Government</label>
+                        <input
+                            type='text'
+                            id='lgaOfOrigin'
+                            name='lgaOfOrigin'
+                            placeholder=''
+                            className='px-4 py-2 outline-none border border-gray-300 rounded-lg' 
+
+                        />
+                    </div> */}
+
               <div className="flex flex-col gap-2 col-span-12">
                 <label htmlFor="qualifications" className="text-sm">
                   Qualifications
@@ -158,11 +188,15 @@ const TeacherProfile = () => {
                 />
               </div>
             </div>
-          </div>
+         
+
+          <div className="flex  gap-6 justify-between items-center mt-6"></div>
+
+          {/* <Button className="mt-4 bg-[#4a3aff] hover:bg-[#5144e3]">Update Student Details</Button> */}
         </form>
       </div>
     </section>
   );
 };
 
-export default TeacherProfile;
+export default EditTeacherDetails;

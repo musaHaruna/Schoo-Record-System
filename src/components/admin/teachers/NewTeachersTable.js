@@ -20,7 +20,12 @@ const NewTeachersTable = ({ row, columns, link, page }) => {
               View
             </span>
           </Link>
-
+          <Link to={`/admin/${link}/${params.row.id}/edit`}>
+            <span className="text-[#3ec555] editAction outline-1 p-2   ">
+              {" "}
+              Edit
+            </span>
+          </Link>
           <div
             className="deleteAction"
             onClick={() => handleDelete(params.row.id)}
