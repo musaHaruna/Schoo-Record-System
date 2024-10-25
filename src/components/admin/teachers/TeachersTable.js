@@ -45,7 +45,7 @@ const TeachersTable = () => {
                 className="add-teacher"
                 onClick={() => navigate("/admin/add-teacher")}
               >
-                Add Teacher
+                Add Staff
               </button>
             </div>
           </div>

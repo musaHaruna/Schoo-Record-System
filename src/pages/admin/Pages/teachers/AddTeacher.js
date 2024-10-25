@@ -37,7 +37,7 @@ const AddTeacher = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setTeacherDetails((preValue) => { 
+    setTeacherDetails((preValue) => {
       return { ...preValue, [name]: value };
     });
   };
@@ -71,7 +71,7 @@ const AddTeacher = () => {
         {/* body */}
 
         <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
-          <h2 className="text-[18px]">Teacher Information</h2>
+          <h2 className="text-[18px]">Staff Information</h2>
 
           <div className="w-full border border-gray-200 p-4 flex flex-col gap-4 ">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 ">
@@ -156,7 +156,6 @@ const AddTeacher = () => {
                   className="px-4 py-2 outline-[#988fff] border border-gray-300 rounded-lg"
                 />
               </div>
-            
             </div>
 
             {/* second row */}
@@ -242,7 +241,7 @@ const AddTeacher = () => {
           <div className="flex  gap-6 justify-between items-center mt-6"></div>
 
           <Button className="mt-4 bg-[#4a3aff] hover:bg-[#5144e3]">
-            {isLoading ? <Loader2 className="animate-spin" /> : "Add Teacher"}
+            {isLoading ? <Loader2 className="animate-spin" /> : "Add Staff"}
           </Button>
         </form>
       </div>

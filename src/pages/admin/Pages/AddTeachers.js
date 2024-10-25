@@ -39,7 +39,7 @@ const AddTeachers = () => {
     <article className="admin-dashboard teachers-page">
       <section className="admin-dashboard-heading">
         <div>
-          <h1>Add Teacher</h1>
+          <h1>Add Staff</h1>
           <p>Fill in the details of staff below.</p>
         </div>
 
@@ -64,7 +64,7 @@ const AddTeachers = () => {
         </div>
         <button onClick={openAddTeachers} className="import-btn">
           <AiOutlinePlusCircle className="add-icon" />
-          Add Teachers
+          Add Staff
         </button>
       </div>
       {addTeachers && (
