@@ -2,13 +2,18 @@ import React, { useEffect, useState } from "react";
 
 import DeleteTeacher from "./DeleteTeacher";
 import { useParams } from "react-router-dom";
-import { useGetSingleTeacherQuery } from "../../../../app/api/teachersApi";
+import {
+  useGetSingleTeacherQuery,
+  useUpdateTeacherMutation,
+} from "../../../../app/api/teachersApi";
 import { Loader2 } from "lucide-react";
 import { Button } from "../../../../components/ui/button";
 
 const EditTeacherDetails = () => {
   const params = useParams();
   const { data, isLoading } = useGetSingleTeacherQuery(params.id);
+  const [updateTeacher, { isLoading: isUpdating, isError, error, isSuccess }] =
+    useUpdateTeacherMutation();
 
   const [teacherDetails, setTeacherDetails] = useState({
     name: "",
@@ -32,12 +37,25 @@ const EditTeacherDetails = () => {
     });
   }, [params.id, data]);
 
+  useEffect(() => {
+    if (isSuccess) {
+      console.log("Update successful!");
+    } else if (isError) {
+      console.log(error);
+      console.log("Update failed!");
+    }
+  }, [isSuccess, isError]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     setTeacherDetails((preValue) => {
       return { ...preValue, [name]: value };
     });
+  };
+
+  const handleSave = () => {
+    updateTeacher({ id: params.id, body: teacherDetails });
   };
 
   if (isLoading) {
@@ -61,8 +79,7 @@ const EditTeacherDetails = () => {
           </div>
 
           <div className="flex items-center gap-2">
-
-            <Button >Save</Button>
+            <Button onClick={handleSave}>Save</Button>
             <DeleteTeacher id={params.id} />
           </div>
         </div>
@@ -103,53 +120,53 @@ const EditTeacherDetails = () => {
             </div>
           </div>
 
-            {/* second row */}
-            <div className="grid   gap-6 grid-cols-12 ">
-              <div className="flex flex-col gap-2 col-span-6">
-                <label htmlFor="dateOfBirth" className="text-sm">
-                  Date of Birth
-                </label>
-                <input
-                  type="text"
-                  id="dateOfBirth"
-                  name="dateOfBirth"
-                  placeholder="dd/mm/yyy"
-                  value={teacherDetails.dateOfBirth}
-                  onChange={handleChange}
-                  className="px-4 py-2 outline-none border border-gray-300 rounded-lg"
-                />
-              </div>
-              <div className="flex flex-col gap-2 col-span-6">
-                <label htmlFor="gender" className="text-sm">
-                  Gender
-                </label>
-                <select
-                  value={teacherDetails.gender}
-                  onChange={handleChange}
-                  className="px-4 py-2 outline-none border border-gray-300 rounded-lg"
-                >
-                  <option></option>
-                  <option value={"male"}>Male</option>
-                  <option value={"female"}>Female</option>
-                </select>
-              </div>
+          {/* second row */}
+          <div className="grid   gap-6 grid-cols-12 ">
+            <div className="flex flex-col gap-2 col-span-6">
+              <label htmlFor="dateOfBirth" className="text-sm">
+                Date of Birth
+              </label>
+              <input
+                type="text"
+                id="dateOfBirth"
+                name="dateOfBirth"
+                placeholder="dd/mm/yyy"
+                value={teacherDetails.dateOfBirth}
+                onChange={handleChange}
+                className="px-4 py-2 outline-none border border-gray-300 rounded-lg"
+              />
+            </div>
+            <div className="flex flex-col gap-2 col-span-6">
+              <label htmlFor="gender" className="text-sm">
+                Gender
+              </label>
+              <select
+                value={teacherDetails.gender}
+                onChange={handleChange}
+                className="px-4 py-2 outline-none border border-gray-300 rounded-lg"
+              >
+                <option></option>
+                <option value={"male"}>Male</option>
+                <option value={"female"}>Female</option>
+              </select>
+            </div>
 
-              <div className="flex flex-col gap-2 col-span-6">
-                <label htmlFor="phoneNumber" className="text-sm">
-                  Teacher's Number
-                </label>
-                <input
-                  type="text"
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  value={teacherDetails.phoneNumber}
-                  onChange={handleChange}
-                  placeholder="090123748393"
-                  className="px-4 py-2 outline-none border border-gray-300 rounded-lg"
-                />
-              </div>
+            <div className="flex flex-col gap-2 col-span-6">
+              <label htmlFor="phoneNumber" className="text-sm">
+                Teacher's Number
+              </label>
+              <input
+                type="text"
+                id="phoneNumber"
+                name="phoneNumber"
+                value={teacherDetails.phoneNumber}
+                onChange={handleChange}
+                placeholder="090123748393"
+                className="px-4 py-2 outline-none border border-gray-300 rounded-lg"
+              />
+            </div>
 
-              {/* <div className='flex flex-col gap-2 col-span-6'>
+            {/* <div className='flex flex-col gap-2 col-span-6'>
                         <label htmlFor='stateOfOrigin' className='text-sm'>State of Origin</label>
                         <input
                             type='text'
@@ -161,7 +178,7 @@ const EditTeacherDetails = () => {
                         />
                     </div> */}
 
-              {/* <div className='flex flex-col gap-2 col-span-6'>
+            {/* <div className='flex flex-col gap-2 col-span-6'>
                         <label htmlFor='lgaOfOrigin' className='text-sm'>Local Government</label>
                         <input
                             type='text'
@@ -173,22 +190,21 @@ const EditTeacherDetails = () => {
                         />
                     </div> */}
 
-              <div className="flex flex-col gap-2 col-span-12">
-                <label htmlFor="qualifications" className="text-sm">
-                  Qualifications
-                </label>
-                <textarea
-                  type="text"
-                  id="qualifications"
-                  name="qualifications"
-                  placeholder=""
-                  value={teacherDetails.qualifications}
-                  onChange={handleChange}
-                  className="px-4 py-2 outline-none border border-gray-300 rounded-lg"
-                />
-              </div>
+            <div className="flex flex-col gap-2 col-span-12">
+              <label htmlFor="qualifications" className="text-sm">
+                Qualifications
+              </label>
+              <textarea
+                type="text"
+                id="qualifications"
+                name="qualifications"
+                placeholder=""
+                value={teacherDetails.qualifications}
+                onChange={handleChange}
+                className="px-4 py-2 outline-none border border-gray-300 rounded-lg"
+              />
             </div>
-         
+          </div>
 
           <div className="flex  gap-6 justify-between items-center mt-6"></div>
 
