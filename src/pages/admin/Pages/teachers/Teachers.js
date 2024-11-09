@@ -1,5 +1,5 @@
 import "../../../../assets/css/admin/teachersPage.css";
-// import TeachersTable from '../../../components/admin/teachers/TeachersTable'
+import TeachersTable from '../../../components/admin/teachers/TeachersTable'
 import { Link, useNavigate } from "react-router-dom";
 import NewTeachersTable from "../../../../components/admin/teachers/NewTeachersTable";
 import { Button } from "../../../../components/ui/button";
