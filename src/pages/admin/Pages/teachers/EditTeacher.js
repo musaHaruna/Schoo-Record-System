@@ -8,6 +8,8 @@ import {
 } from "../../../../app/api/teachersApi";
 import { Loader2 } from "lucide-react";
 import { Button } from "../../../../components/ui/button";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const EditTeacherDetails = () => {
   const params = useParams();
@@ -39,10 +41,13 @@ const EditTeacherDetails = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      console.log("Update successful!");
+      toast.success("Update Successfully!");
+      setTimeout(() => {
+        navigate("/admin/all-teachers");
+      }, 2000);
     } else if (isError) {
       console.log(error);
-      console.log("Update failed!");
+      toast.error("Update failed!");
     }
   }, [isSuccess, isError]);
 
@@ -53,6 +58,8 @@ const EditTeacherDetails = () => {
       return { ...preValue, [name]: value };
     });
   };
+
+  const navigate = useNavigate();
 
   const handleSave = () => {
     updateTeacher({ id: params.id, body: teacherDetails });
