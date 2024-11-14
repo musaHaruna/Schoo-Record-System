@@ -9,7 +9,7 @@ const Guardian = ({ nextStep, prevStep, step }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted with the data below", {
+    console.log("Form submitted with data:", {
       fatherName,
       motherName,
       fatherContact,

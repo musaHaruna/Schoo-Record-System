@@ -42,6 +42,7 @@ import TeachersDashboard from "./pages/teachers/TeachersDashboard";
 import { ManageResults } from "./pages/teachers/ManageResults";
 import { UploadResults } from "./pages/teachers/UploadResults";
 import TeacherLogin from "./pages/onboarding/TeacherLogin";
+import EditTeacherDetails from "./pages/admin/Pages/teachers/EditTeacher";
 
 function App() {
   return (
@@ -95,6 +96,7 @@ function App() {
           <Route path="add-teachers" element={<AddTeachers />} />
           <Route path="add-teacher" element={<AddTeacher />} />
           <Route path="all-teachers/:id" element={<TeachersDetails />} />
+          <Route path="all-teachers/:id/edit" element={<EditTeacherDetails />} />
 
           {/* students */}
           <Route path="students" element={<Students />} />

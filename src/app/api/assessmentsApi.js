@@ -39,9 +39,9 @@ export const assessmentsApi = createApi({
     }),
     updateAssessment: builder.mutation({
       query: (id, body) => ({
-        url: `/assessments/${id}`,
+        url: `/assessments/${id}/status`,
         body,
-        method: "PATCH",
+        method: "PUT",
       }),
       invalidatesTags: ["Assessments"],
     }),

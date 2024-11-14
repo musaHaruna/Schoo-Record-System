@@ -8,6 +8,8 @@ const TeacherProfile = () => {
   const params = useParams();
   const { user } = useSelector((state) => state.user);
 
+  console.log("hello");
+  console.log(user);
   const { data, isLoading } = useGetSingleTeacherQuery(user?.id);
 
   const [teacherDetails, setTeacherDetails] = useState({

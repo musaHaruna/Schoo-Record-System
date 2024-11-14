@@ -42,8 +42,6 @@ const AssessmentsTable = ({ row, columns, link, page }) => {
         <div className="flex items-center w-full actionButton h-full gap-2 cursor-pointer">
           <SingleAssessment id={params.row.id} />
 
-          <Link>edit</Link>
-
           <div
             className="deleteAction"
             onClick={() => handleDelete(params.row.id)}

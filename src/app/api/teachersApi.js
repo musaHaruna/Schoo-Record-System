@@ -46,6 +46,14 @@ export const teachersApi = createApi({
       }),
       invalidatesTags: ["Teachers"],
     }),
+    updateTeacher: builder.mutation({
+      query: ({ id, body }) => ({
+        url: `/teacher/${id}`,
+        method: "PATCH",
+        body,
+      }),
+      invalidatesTags: ["Teachers"],
+    }),
   }),
 });
 
@@ -56,4 +64,5 @@ export const {
   useGetSingleTeacherQuery,
   useDeleteTeacherMutation,
   useGetHeadTeacherQuery,
+  useUpdateTeacherMutation,
 } = teachersApi;

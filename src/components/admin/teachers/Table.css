@@ -13,6 +13,11 @@
   color: #61db76;
   cursor: pointer;
 }
+.editAction {
+  padding: 10px 16px;
+  color: #123187;
+  cursor: pointer;
+}
 .deleteAction {
   padding: 10px 16px;
   color: #d40527;

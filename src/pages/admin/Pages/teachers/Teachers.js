@@ -1,17 +1,12 @@
 import "../../../../assets/css/admin/teachersPage.css";
-import TeachersTable from '../../../components/admin/teachers/TeachersTable'
 import { Link, useNavigate } from "react-router-dom";
 import NewTeachersTable from "../../../../components/admin/teachers/NewTeachersTable";
 import { Button } from "../../../../components/ui/button";
 import { Loader2 } from "lucide-react";
 import { useGetAllTeachersQuery } from "../../../../app/api/teachersApi";
-import { useEffect } from "react";
 
 const Teachers = () => {
   const { data, isLoading } = useGetAllTeachersQuery();
-  useEffect(() => {
-    console.log("Teachers>>>", data);
-  }, [data]);
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "name", headerName: "Name", width: 160 },
