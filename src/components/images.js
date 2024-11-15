@@ -20,7 +20,13 @@ const Logo = () => {
   return <img src={logo} alt="logo" />;
 };
 const Profile = () => {
-  return <img src={profile} alt="profile" />;
+  return (
+    <img
+      src="https://www.gravatar.com/avatar/?d=mp"
+      alt="profile"
+      style={{ borderRadius: "50%" }}
+    />
+  );
 };
 const TeachersIconWhite = () => {
   return <img src={teachersIconWhite} alt="logo" />;

@@ -41,10 +41,10 @@ export const classesApi = createApi({
       invalidatesTags: ["Classes"],
     }),
     updateClasses: builder.mutation({
-      query: (id, body) => ({
-        url: `/Classes/${id}`,
-        body,
-        method: "PUT",
+      query: ({ id, name }) => ({
+        url: `/classes/${id}`,
+        body: { name }, // Correctly structure the payload
+        method: "PATCH",
       }),
       invalidatesTags: ["Classes"],
     }),
@@ -65,5 +65,5 @@ export const {
   useGetSingleClassesQuery,
   useUpdateClassesMutation,
   useGetClassResultsQuery,
-  useGetClassStudentsQuery
+  useGetClassStudentsQuery,
 } = classesApi;

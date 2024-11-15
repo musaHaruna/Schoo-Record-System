@@ -19,6 +19,7 @@ import {
   AddTeacher,
   Subjects,
   SingleSubjects,
+  Settings,
   SubjectStudents,
   Results,
   AccademicSessions,
@@ -41,6 +42,7 @@ import TeachersDashboard from "./pages/teachers/TeachersDashboard";
 import { ManageResults } from "./pages/teachers/ManageResults";
 import { UploadResults } from "./pages/teachers/UploadResults";
 import TeacherLogin from "./pages/onboarding/TeacherLogin";
+import EditTeacherDetails from "./pages/admin/Pages/teachers/EditTeacher";
 
 function App() {
   return (
@@ -59,7 +61,7 @@ function App() {
         transition={Zoom}
       />
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<LoginPage />} />
         <Route path="/select-preference" element={<SelectPreference />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/teacher-login" element={<TeacherLogin />} />
@@ -67,7 +69,9 @@ function App() {
         <Route path="/staff-registration" element={<StaffRegistration />} />
 
         <Route path="/admin" element={<Layout />}>
+          <Route path="settings" element={<Settings />} />
           <Route index element={<Dashboard />} />
+
           <Route path="classes" element={<Classes />} />
           <Route path="class/:id" element={<SingleClass />} />
 
@@ -92,6 +96,7 @@ function App() {
           <Route path="add-teachers" element={<AddTeachers />} />
           <Route path="add-teacher" element={<AddTeacher />} />
           <Route path="all-teachers/:id" element={<TeachersDetails />} />
+          <Route path="all-teachers/:id/edit" element={<EditTeacherDetails />} />
 
           {/* students */}
           <Route path="students" element={<Students />} />
@@ -132,6 +137,10 @@ function App() {
           <Route path="results" element={<ManageResults />} />
           <Route path="results/upload" element={<UploadResults />} />
         </Route>
+
+        {/* adding new route  */}
+
+        <Route path="/settings" element={<Settings />} />
 
         <Route path="*" element={<Error />} />
       </Routes>

@@ -1,17 +1,12 @@
 import "../../../../assets/css/admin/teachersPage.css";
-// import TeachersTable from '../../../components/admin/teachers/TeachersTable'
 import { Link, useNavigate } from "react-router-dom";
 import NewTeachersTable from "../../../../components/admin/teachers/NewTeachersTable";
 import { Button } from "../../../../components/ui/button";
 import { Loader2 } from "lucide-react";
 import { useGetAllTeachersQuery } from "../../../../app/api/teachersApi";
-import { useEffect } from "react";
 
 const Teachers = () => {
   const { data, isLoading } = useGetAllTeachersQuery();
-  useEffect(() => {
-    console.log("Teachers>>>",data);
-  }, [data]);
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "name", headerName: "Name", width: 160 },
@@ -36,10 +31,10 @@ const Teachers = () => {
   return (
     <article className="py-4 px-2 sm:p-8 w-full h-full flex flex-col gap-6 overflow-y-auto">
       <div className="flex items-center justify-between">
-        <h1 className="font-bold text-[32px]">All Teachers</h1>
+        <h1 className="font-bold text-[32px]">All Staff</h1>
         <Link to="/admin/add-teacher">
           <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">
-            Add New Teacher
+            Add New Staff
           </Button>
         </Link>
       </div>

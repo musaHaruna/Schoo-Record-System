@@ -7,9 +7,7 @@ import {
   studentGrowthChartData,
   adminSummary,
   performanceData,
-  genderData,
   enrollmentByAgeData,
-  teacherToStudentCharts,
 } from "../data";
 import TeachersToStudentRatioChart from "../../../components/admin/charts/TeachersToStudentRatioChart";
 import { useGetUserProfileQuery } from "../../../app/api/userApi";
@@ -18,7 +16,7 @@ import { useGetAllStudentsQuery } from "../../../app/api/studentsApi";
 import { useGetAllClassesQuery } from "../../../app/api/classApi";
 import { useGetAllSubjectsQuery } from "../../../app/api/allSubjectApi";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function getColorByItemId(id) {
   switch (id) {
@@ -41,17 +39,34 @@ const Dashboard = () => {
   const { data: studentsData } = useGetAllStudentsQuery();
   const { data: classesData } = useGetAllClassesQuery();
   const { data: subjectsData } = useGetAllSubjectsQuery();
+  const [maleToFemaleRatio, setMaleToFemaleRatio] = useState([]);
+  const [teacherToStudentRatio, setTeacherStudentRatio] = useState([]);
 
-  const teacherToStudentRatio = [
-    {name: "Teachers", value: teachersData?.length},
-    {name: "Students", value: studentsData?.length}
-  ];
+  useEffect(() => {
+    let boysToGirlsRatio = [
+      {
+        name: "Boys",
+        value: studentsData
+          ? studentsData.filter((student) => student.gender === "male").length
+          : 0,
+      },
+      {
+        name: "Girls",
+        value: studentsData
+          ? studentsData.filter((student) => student.gender === "female").length
+          : 0,
+      },
+    ];
+    setMaleToFemaleRatio(boysToGirlsRatio);
+  }, [studentsData]);
 
-  const maleToFemaleRatio = [
-    {name: "Boys", value: studentsData.filter(student=> student.gender === 'male').length},
-    {name: "Girls", value: studentsData.filter(student=> student.gender === 'female').length}
-  ];
-  
+  useEffect(() => {
+    let teacherStudentRatio = [
+      { name: "Teachers", value: teachersData?.length },
+      { name: "Students", value: studentsData?.length },
+    ];
+    setTeacherStudentRatio(teacherStudentRatio);
+  }, [teachersData, studentsData]);
 
   return (
     <article className="admin-dashboard">
@@ -89,10 +104,10 @@ const Dashboard = () => {
                 {item.id === 1
                   ? teachersData?.length
                   : item.id === 2
-                  ? studentsData?.length
-                  : item.id === 3
-                  ? subjectsData?.length
-                  : classesData?.length}{" "}
+                    ? studentsData?.length
+                    : item.id === 3
+                      ? subjectsData?.length
+                      : classesData?.length}{" "}
               </div>
             </div>
           ))
@@ -105,7 +120,7 @@ const Dashboard = () => {
             <>
               <div className="w-[900px] bg-[#ffffff] rounded-lg animate-pulse h-[280px]"></div>
 
-              <div className="w-[900px] bg-[#ffffff] rounded-lg animate-pulse h-[280px]"></div>
+              <div className="w-[900px] bsetMaleToFemaleRatiog-[#ffffff] rounded-lg animate-pulse h-[280px]"></div>
             </>
           ) : (
             <>

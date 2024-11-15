@@ -2,7 +2,6 @@ import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { GoDotFill } from "react-icons/go";
 
 const TeachersToStudentRatioChart = ({ data }) => {
-  console.log("chart Data is", data);
   return (
     <section>
       <div className="chart students-teachers-ratio-rating">

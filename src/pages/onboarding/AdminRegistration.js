@@ -5,6 +5,7 @@ import { useRegisterMutation } from "../../app/api/authApi";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const StudentRegistration = () => {
   const navigate = useNavigate();
@@ -147,14 +148,16 @@ const StudentRegistration = () => {
 
             <div className="flex flex-col items-center justify-center w-full gap-4">
               <Button className="w-full bg-[#4a3aff] hover:bg-[#4e3ffa] ">
-                {" "}
                 {isLoading ? <Loader2 className="animate-spin" /> : "Register"}
               </Button>
-              <p className="text-black text-sm">
+              <p className="text-black text-sm flex flex-wrap items-center">
                 Already Registered?{" "}
-                <span className="text-gray-600 cursor-pointer underline">
-                  Login to your dashboard{" "}
-                </span>
+                <Link
+                  to="/login"
+                  className="text-gray-600 cursor-pointer underline ml-1"
+                >
+                  Login to your dashboard
+                </Link>
               </p>
             </div>
           </form>
