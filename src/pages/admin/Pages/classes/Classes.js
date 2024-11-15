@@ -27,7 +27,7 @@ const Classes = () => {
           <div className="flex items-center gap-2">
             <img src="/newFolder.png" alt="img" className="w-[90px]" />
             <div className="flex flex-col">
-              <h1 className="text-[32px]">All Classes,</h1>
+              <h1 className="text-[32px]">All Classes</h1>
               <p className="text-sm">Total Classes {data.length}</p>
             </div>
           </div>
